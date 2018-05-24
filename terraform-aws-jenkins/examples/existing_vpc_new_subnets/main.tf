@@ -1,0 +1,69 @@
+provider "aws" {
+  region = "us-west-2"
+}
+
+variable "max_availability_zones" {
+  default = "2"
+}
+
+data "aws_availability_zones" "available" {}
+
+module "jenkins" {
+  source      = "../../"
+  namespace   = "Ex"
+  name        = "jenkins"
+  stage       = "prod"
+  description = "Jenkins server as Docker container running on Elastic Beanstalk"
+
+  master_instance_type         = "t2.medium"
+  aws_account_id               = "000111222333"
+  aws_region                   = "us-west-2"
+  availability_zones           = ["${slice(data.aws_availability_zones.available.names, 0, var.max_availability_zones)}"]
+  vpc_id                       = "vpc-a22222ee"
+  zone_id                      = "ZXXXXXXXXXXX"
+  public_subnets               = "${module.subnets.public_subnet_ids}"
+  private_subnets              = "${module.subnets.private_subnet_ids}"
+  loadbalancer_certificate_arn = "XXXXXXXXXXXXXXXXX"
+  ssh_key_pair                 = "ssh-key-jenkins"
+
+  github_oauth_token  = ""
+  github_organization = "Merlz"
+  github_repo_name    = "jenkins"
+  github_branch       = "master"
+
+  datapipeline_config = {
+    instance_type = "t2.small"
+    email         = "me@mycompany.com"
+    period        = "12 hours"
+    timeout       = "60 Minutes"
+  }
+
+  env_vars = {
+    JENKINS_USER          = "admin"
+    JENKINS_PASS          = "123456"
+    JENKINS_NUM_EXECUTORS = 4
+  }
+
+  tags = {
+    BusinessUnit = "ABC"
+    Department   = "XYZ"
+  }
+}
+
+module "subnets" {
+  source              = "git::https://github.com/Merlz/tf-modules/terraform-aws-dynamic-subnets.git?ref=master"
+  availability_zones  = ["${slice(data.aws_availability_zones.available.names, 0, var.max_availability_zones)}"]
+  namespace           = "Ex"
+  name                = "jenkins"
+  stage               = "prod"
+  region              = "us-west-2"
+  vpc_id              = "vpc-a22222ee"
+  igw_id              = "igw-s32321vd"
+  cidr_block          = "10.0.0.0/16"
+  nat_gateway_enabled = "true"
+
+  tags = {
+    BusinessUnit = "ABC"
+    Department   = "XYZ"
+  }
+}
