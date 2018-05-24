@@ -1,5 +1,6 @@
-# tf-modules
-A collection of Terraform Modules
+# Terraform Modules
+
+A collection of Terraform Modules scraped from various places
 
 Following modules are from CloudPosse and modified to suit my needs:
 
