@@ -1,5 +1,5 @@
 module "private_label" {
-  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label/ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"
