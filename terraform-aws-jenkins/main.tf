@@ -12,7 +12,7 @@ module "elastic_beanstalk_application" {
 
 # Elastic Beanstalk Environment
 module "elastic_beanstalk_environment" {
-  source        = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-elastic-beanstalk-environment?ref=ref=master"
+  source        = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-elastic-beanstalk-environment?ref=master"
   namespace     = "${var.namespace}"
   name          = "${var.name}"
   stage         = "${var.stage}"
