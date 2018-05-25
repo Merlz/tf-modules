@@ -1,6 +1,6 @@
 # Define composite variables for resources
 module "label" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-null-label.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
   namespace  = "${var.namespace}"
   name       = "${var.name}"
   stage      = "${var.stage}"
@@ -47,7 +47,7 @@ resource "aws_security_group" "default" {
 }
 
 module "dns" {
-  source  = "git::https://github.com/merlz/tf-modules/terraform-aws-route53-cluster-hostname.git?ref=master"
+  source  = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-route53-cluster-hostname?ref=master"
   name    = "${module.label.id}"
   ttl     = 60
   zone_id = "${var.zone_id}"

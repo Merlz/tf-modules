@@ -2,8 +2,8 @@
 # terraform-null-label example #
 ################################
 module "label" {
-  source    = "../../"
-  namespace = "cp"
+  source    = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
+  namespace = "Ex"
   stage     = "prod"
   name      = "app"
 

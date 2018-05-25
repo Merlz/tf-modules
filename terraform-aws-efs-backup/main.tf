@@ -1,7 +1,7 @@
 data "aws_region" "default" {}
 
 module "label" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-null-label.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"

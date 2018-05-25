@@ -8,7 +8,7 @@ Include this repository as a module in your existing terraform code:
 
 ```hcl
 module "build" {
-    source              = "git::https://github.com/merlz/tf-modules/terraform-aws-codebuild.git?ref=master"
+    source              = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-codebuild?ref=master"
     namespace           = "general"
     name                = "ci"
     stage               = "staging"

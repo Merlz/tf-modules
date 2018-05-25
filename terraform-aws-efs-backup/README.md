@@ -18,7 +18,7 @@ Include this module in your existing terraform code:
 
 ```hcl
 module "efs_backup" {
-  source = "git::https://github.com/merlz/tf-modules/terraform-aws-efs-backup.git?ref=master"
+  source = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-efs-backup?ref=master"
 
   name                               = "${var.name}"
   stage                              = "${var.stage}"
@@ -77,7 +77,7 @@ To enable connectivity between the `DataPipeline` instances and the `EFS`, use o
 
 ```hcl
 module "elastic_beanstalk_environment" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-aws-elastic-beanstalk-environment.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-elastic-beanstalk-environment?ref=master"
   namespace  = "${var.namespace}"
   name       = "${var.name}"
   stage      = "${var.stage}"
@@ -89,7 +89,7 @@ module "elastic_beanstalk_environment" {
 }
 
 module "efs" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-aws-efs.git?ref=tmaster"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-efs?ref=tmaster"
   namespace  = "${var.namespace}"
   name       = "${var.name}"
   stage      = "${var.stage}"
@@ -102,7 +102,7 @@ module "efs" {
 }
 
 module "efs_backup" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-aws-efs-backup.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-efs-backup?ref=master"
   name       = "${var.name}"
   stage      = "${var.stage}"
   namespace  = "${var.namespace}"

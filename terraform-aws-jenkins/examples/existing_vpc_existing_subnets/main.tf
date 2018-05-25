@@ -9,7 +9,7 @@ variable "max_availability_zones" {
 data "aws_availability_zones" "available" {}
 
 module "jenkins" {
-  source      = "../../"
+  source      = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-jenkins?ref=master"
   namespace   = "Ex"
   name        = "jenkins"
   stage       = "prod"

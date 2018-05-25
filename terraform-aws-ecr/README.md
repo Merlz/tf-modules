@@ -23,7 +23,7 @@ data "aws_iam_role" "ecr" {
 }
 
 module "ecr" {
-  source              = "git::https://github.com/merlz/tf-modules/terraform-aws-ecr.git?ref=master"
+  source              = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-ecr?ref=master"
   name                = "${var.name}"
   namespace           = "${var.namespace}"
   stage               = "${var.stage}"

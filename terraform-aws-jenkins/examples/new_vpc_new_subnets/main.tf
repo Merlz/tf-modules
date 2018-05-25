@@ -9,7 +9,7 @@ variable "max_availability_zones" {
 data "aws_availability_zones" "available" {}
 
 module "jenkins" {
-  source      = "../../"
+  source      = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-jenkins/ref=master"
   namespace   = "Ex"
   name        = "jenkins"
   stage       = "prod"
@@ -51,7 +51,7 @@ module "jenkins" {
 }
 
 module "vpc" {
-  source     = "git::https://github.com/Merlz/tf-modules/terraform-aws-vpc.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-vpc?ref=master"
   namespace  = "Ex"
   name       = "jenkins"
   stage      = "prod"
@@ -64,7 +64,7 @@ module "vpc" {
 }
 
 module "subnets" {
-  source              = "git::https://github.com/Merlz/tf-modules/terraform-aws-dynamic-subnets.git?ref=master"
+  source              = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-dynamic-subnets?ref=master"
   availability_zones  = ["${slice(data.aws_availability_zones.available.names, 0, var.max_availability_zones)}"]
   namespace           = "Ex"
   name                = "jenkins"

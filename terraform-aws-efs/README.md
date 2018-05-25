@@ -9,7 +9,7 @@ Include this repository as a module in your existing terraform code:
 
 ```hcl
 module "efs" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-aws-efs.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-aws-efs?ref=master"
   namespace  = "global"
   name       = "app"
   stage      = "prod"

@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "resource_role" {
 }
 
 module "resource_role_label" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-null-label.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"
@@ -54,7 +54,7 @@ data "aws_iam_policy_document" "role" {
 }
 
 module "role_label" {
-  source     = "git::https://github.com/merlz/tf-modules/terraform-null-label.git?ref=master"
+  source     = "git::git@github.com:Merlz/tf-modules.git//terraform-null-label?ref=master"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"
